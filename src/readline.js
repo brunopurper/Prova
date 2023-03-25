@@ -1,4 +1,6 @@
 const prompt = require('prompt-sync')()
+const readline = require('readline');
+
 
 function message(msg, timems) {
     var time = timems == undefined ? 900 : timems
@@ -24,18 +26,43 @@ do {
     console.log("1 - Consultar Trechos x Modalidade")
     console.log("2 - Cadastrar Transporte")
     console.log("3 - Dados Estatísticos")
-    console.log("9 - Finalizar o Programa\n")
+    console.log("4 - Finalizar o Programa\n")
     var select = Number(prompt("Opção: "))
+
+
+    const itens = {
+      Celular: { peso: 0.5 },
+      Geladeira: { peso : 60 },
+      Freezer : { peso : 100 },
+      Cadeira: { peso : 5 },
+      Luminária: { peso :0.8 },
+      LavaRoupas: { peso :120 }
+    }
+    const quantities = {};
 
     switch(select) {
         case 1:
-            break
+          console.log('-- Para melhor atender suas necessidades, primeiro me diga: \n')
+        for (const item of Object.keys(itens)) {
+          const quantitie = parseInt(prompt('- Qual a quantidade do item: ' + item + ' você irá transportar? '));
+          quantities[item] = quantitie
+        }
+
+          const total = 0;
+
+          for(const item of Object.keys(itens)) {
+            total += itens[item].peso * quantities[item];
+          }
+
+        console.log('O total de peso é ' + total + 'KG');
+
+          break
         case 2:
             console.log("Exemplo: ")
             break
         case 3:
             break
-        case 9:
+        case 4:
             console.clear()
             process.exit(0);
             break
@@ -43,7 +70,7 @@ do {
             message('Pedido Inválido, tente novamente...')
     }
 
-} while (option = 9)
+} while (option = 4)
 
 
 const trucks = {
@@ -64,14 +91,6 @@ const trucks = {
     }
 }
 
-const itens = {
-    phone: "0.5",
-    refrigerator: "60",
-    freezer: "100",
-    chair: "5",
-    lamps: "0.8",
-    washingMachine: "120"
-}
 
 
 function chooseTruck(weight) {
