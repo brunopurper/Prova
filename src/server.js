@@ -8,13 +8,13 @@ lines.forEach((line, index) => {
     var distances = line.split(';');
     var curr = new Map();
     citynames.forEach((city, pos) => {
-        // console.log(city);
+         console.log(city);
         curr.set(city, Number(distances[pos]));
     });
     cities.set(citynames[index], curr);
 })
 
-// console.log(cities);
+ console.log(cities);
 
 var allCities = citynames;
 console.log(allCities)
@@ -27,7 +27,7 @@ function citieConfirmation(text, array) {
   }
 }
 
-console.log(citieConfirmation('Porto Alegre', allCities))
+//console.log(citieConfirmation('Porto Alegre', allCities))
 
 
   // ARACAJU

@@ -35,7 +35,7 @@ do {
       Geladeira: { peso : 60 },
       Freezer : { peso : 100 },
       Cadeira: { peso : 5 },
-      Luminária: { peso :0.8 },
+      Luminaria: { peso :0.8 },
       LavaRoupas: { peso :120 }
     }
     const quantities = {};
@@ -43,18 +43,23 @@ do {
     switch(select) {
         case 1:
           console.log('-- Para melhor atender suas necessidades, primeiro me diga: \n')
+          var controle = true;
+          while(controle){
         for (const item of Object.keys(itens)) {
           const quantitie = parseInt(prompt('- Qual a quantidade do item: ' + item + ' você irá transportar? '));
           quantities[item] = quantitie
         }
+        var total = 0;
 
-          const total = 0;
 
           for(const item of Object.keys(itens)) {
-            total += itens[item].peso * quantities[item];
-          }
 
-        console.log('O total de peso é ' + total + 'KG');
+            total += (itens[item].peso) * quantities[item];
+          }
+          console.log('O total de peso é ' + total + 'KG');
+          wait()
+          controle = false
+        }
 
           break
         case 2:
